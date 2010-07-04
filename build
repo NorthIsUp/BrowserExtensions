@@ -1,0 +1,4 @@
+/Applications/Chromium.app/Contents/MacOS/Chromium --pack-extension=$1 --pack-extension-key=$1.pem
+
+scp $1.crx northisup.com:/var/www/northisup/images/chrome
+scp updates.xml northisup.com:/var/www/northisup/images/chrome

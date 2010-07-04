@@ -1,0 +1,33 @@
+{
+	"version": "0.4.5",
+	"update_url": "http://northisup.com/i/chrome/updates.xml",
+	"description": "Skypify phone numbers around the web for use with skype",
+	"name": "Skypify the web",
+
+	"background_page": "background.html",
+	"options_page": "options.html",
+
+	"page_action": {
+		"popup": "popup.html",
+		"default_icon": "skypeblue-16.png",
+		"default_title": "skype_default_title"
+	},
+
+	"content_scripts": [
+	{
+		"js": [ "doc_start.js", "script.js" ],
+		"matches": [ "http://*/*", "https://*/*" ],
+		"run_at": "document_end"
+	}
+	],
+
+	"icons": {
+		"512": "skypeblue-512.png",
+		"256": "skypeblue-256.png",
+		"128": "skypeblue-128.png",
+		"32": "skypeblue-32.png",
+		"16": "skypeblue-16.png"
+	},
+
+	"permissions": [ "tabs", "http://*/*", "https://*/*" ]
+}

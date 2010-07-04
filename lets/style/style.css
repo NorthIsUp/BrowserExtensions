@@ -1,0 +1,13 @@
+.header{ font-size:24px; font-weight:bold}
+.subheader{ font-size:16px; font-weight:bold}
+.item{ height:16px; padding:2px 14px; white-space:nowrap; font:menu}
+.item:hover{ color:HighlightText; background-color:Highlight; cursor:pointer}
+.item *{ vertical-align:middle}
+.version{ font-size:small; float:right}
+.copyright{ font-size:small; margin:auto}
+.options_margin{ margin:10px}
+.left_column{ float:left}
+.right_column{ float:left}
+.column_wrapper{ overflow:hidden}
+.greyText{ color:grey}
+.main_wrapper{ background-color:#afa; margin:25px 50px; padding:10px; border:solid 2px black}

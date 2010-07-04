@@ -1,0 +1,126 @@
+<script type="text/javascript" src="scripts/popup.js"></script>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+
+<body id="the_body" onload="init()">
+	<!-- <div id="div_site_wrapper">
+		<div id="div_site" class="item" onclick="openLink('site','home')">
+			<img src="icons/icon-world.png">
+			<span id="span_google_apps_url"></span>
+		</div>
+		<hr>
+	</div> -->
+	<!-- <div id="div_custom_links_top"></div>
+	<div id="div_custom_hr_top" style="display:none;"><hr></div> -->
+	<div>
+		<div id="div_retail" class="item" onclick="function(){ w=open(('http://www.retailmenot.com/view/'+escape(location))+'?utm_source=extension&utm_medium=bookmarklet','w');
+			setTimeout('w.focus()',1000)}();">
+			<span id="span_retail">Retail Me Not</span>
+		</div>
+
+		<div id="div_retail" class="item" onclick="function(){url='http://deturl.com/download-video.js';
+		document.body.appendChild(document.createElement('script')).src=url+'?'+new%20Date().getTime();
+		}();">
+		<span>PwN Tube</span>
+		</div>
+		<div id="div_retail" class="item" onclick="function(){readStyle='style-novel';readSize='size-medium';readMargin='margin-wide';_readability_script=document.createElement('SCRIPT');_readability_script.type='text/javascript';_readability_script.src='http://lab.arc90.com/experiments/readability/js/readability.js?x='+(Math.random());document.getElementsByTagName('head')[0].appendChild(_readability_script);_readability_css=document.createElement('LINK');_readability_css.rel='stylesheet';_readability_css.href='http://lab.arc90.com/experiments/readability/css/readability.css';_readability_css.type='text/css';_readability_css.media='all';document.getElementsByTagName('head')[0].appendChild(_readability_css);_readability_print_css=document.createElement('LINK');_readability_print_css.rel='stylesheet';_readability_print_css.href='http://lab.arc90.com/experiments/readability/css/readability-print.css';_readability_print_css.media='print';_readability_print_css.type='text/css';document.getElementsByTagName('head')[0].appendChild(_readability_print_css);}();">
+		<span>Readability</span>
+		</div>
+	</div>
+</body>
+
+	<!-- <div id="div_gmail_wrapper">
+		<div id="div_gmail" class="item" onclick="openLink('gmail','home')">
+			<img src="icons/icon-gmail.png">
+			<span id="span_gmail">Gmailf</span>
+		</div>
+		<div id="div_gmail_new" class="item" onclick="openLink('gmail','new')">
+			<img src="icons/icon-gmail-new.png">
+			<span id="span_gmail_new">New Email</span>
+		</div>
+		<div id="div_contacts" class="item" onclick="openLink('contacts','home')">
+			<img src="icons/icon-contacts-from-docs.png">
+			<span id="span_contacts">Google Contacts</span>
+		</div>
+		<div id="div_tasks" class="item" onclick="openLink('tasks','home')">
+			<img src="icons/icon-tasks.png">
+			<span id="span_tasks">Google Tasks</span>
+		</div>
+		<div id="div_buzz" class="item" onclick="openLink('buzz','home')">
+			<img src="icons/icon-buzz.png">
+			<span id="span_buzz">Google Buzz</span>
+		</div>
+		<div id="div_gmail_hr" style="display:none;">
+			<hr>
+		</div>
+	</div>
+
+	<div id="div_calendar_wrapper">
+		<div id="div_calendar" class="item" onclick="openLink('calendar','home')">
+			<img src="icons/icon-calendar.png">
+			<span id="span_calendar">Google Calendar</span>
+		</div>
+		<div  id="div_calendar_new" class="item" onclick="openLink('calendar','new')">
+			<img src="icons/icon-calendar-new.png">
+			<span id="span_calendar_new">New Event</span>
+		</div>
+		<div id="div_calendar_hr" style="display:none;">
+			<hr>
+		</div>
+	</div>
+
+	<div id="div_docs_wrapper">
+		<div id="div_docs" class="item" onclick="openLink('docs','home')">
+			<img src="icons/icon-docs-16.png">
+			<span id="span_docs">Google Docs</span>
+		</div>
+		<div  id="div_docs_new_document" class="item" onclick="openLink('docs','newDocument')">
+			<img src="icons/icon-document-new.png">
+			<span id="span_docs_new_document">New Doc</span>
+		</div>
+		<div  id="div_docs_new_spreadsheet" class="item" onclick="openLink('docs','newSpreadsheet')">
+			<img src="icons/icon-spreadsheet-new.png">
+			<span id="span_docs_new_spreadsheet">New Spreadsheet</span>
+		</div>
+		<div  id="div_docs_new_form" class="item" onclick="openLink('docs','newForm')">
+			<img src="icons/icon-form-new.png">
+			<span id="span_docs_new_form">New Form</span>
+		</div>
+		<div  id="div_docs_new_drawing" class="item" onclick="openLink('docs','newDrawing')">
+			<img src="icons/icon-drawing-new.png">
+			<span id="span_docs_new_drawing">New Drawing</span>
+		</div>
+		<div id="div_docs_new_presentation" class="item" onclick="openLink('docs','newPresentation')">
+			<img src="icons/icon-presentation-new.png">
+			<span id="span_docs_new_presentation">New Presentation</span>
+		</div>
+		<div id="div_docs_hr" style="display:none;">
+			<hr>
+		</div>
+	</div>
+
+	<div id="div_other">
+		<div id="div_reader" class="item" onclick="openLink('reader','home')">
+			<img src="icons/icon-reader.png">
+			<span id="span_reader">Google Reader</span>
+		</div>
+	
+		<div id="div_voice" class="item" onclick="openLink('voice','home')">
+			<img src="icons/icon-voice.png">
+			<span id="span_voice">Google Voice</span>
+		</div>
+	
+		<div id="div_wave" class="item" onclick="openLink('wave','home')">
+			<img src="icons/icon-wave.png">
+			<span id="span_wave">Google Wave</span>
+		</div>
+		<div id="div_other_hr" style="display:none;">
+			<hr>
+		</div>
+	</div>
+	<div id="div_custom_links_bottom"></div>
+	<div id="div_custom_hr_bottom" style="display:none;"><hr></div>
+	
+	<div id="div_options" class="item" onclick="openLink('options','')">
+		<img src="icons/icon-wrench-orange.png">
+		<span id="span_options">Options </span>
+	</div> -->

@@ -1,0 +1,105 @@
+<html>
+<head>
+<script>
+function skypify(){
+	//default country prefix
+	const defaultPrefix= '+1';
+	const trackRegex = /(\+\d\d?)?[\-\s\/\.]?[\(]?(\d){2,4}[\)]?[\-\s\/\.]\d\d\d[\-\s\/\.](\d){3,5}\b/ig;
+
+	function trackUrl(t) {
+
+		if (String(t).charAt(0)!= '+') t= defaultPrefix + String(t);
+		return "callto:" + (String(t).replace(/[\-\s\/\(\)\.]/g, ""));
+	}
+
+	// tags we will scan looking for un-hyperlinked urls
+	var allowedParents = [
+	"abbr", "acronym", "address", "applet", "b", "bdo", "big", "blockquote", "body", 
+	"caption", "center", "cite", "code", "dd", "del", "div", "dfn", "dt", "em", 
+	"fieldset", "font", "form", "h1", "h2", "h3", "h4", "h5", "h6", "i", "iframe",
+	"ins", "kdb", "li", "nobr", "object", "pre", "p", "q", "samp", "small", "span", "strike", 
+	"s", "strong", "sub", "sup", "td", "th", "tt", "u", "var"
+	];
+
+	var xpath = "//text()[(parent::" + allowedParents.join(" or parent::") + ")" + "]";
+
+	var candidates = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
+
+	for (var cand = null, i = 0; (cand = candidates.snapshotItem(i)); i++) {
+		if (trackRegex.test(cand.nodeValue)) {
+			var span = document.createElement("span");
+			var source = cand.nodeValue;
+
+			cand.parentNode.replaceChild(span, cand);
+
+			trackRegex.lastIndex = 0;
+			for (var match = null, lastLastIndex = 0; (match = trackRegex.exec(source)); ) {
+				span.appendChild(document.createTextNode(source.substring(lastLastIndex, match.index)));
+
+				var a = document.createElement("a");
+				a.setAttribute("href", trackUrl(match[0]));
+				a.appendChild(document.createTextNode(match[0]));
+				span.appendChild(a);
+
+				var img = document.createElement("img");
+				img.setAttribute("src", "http://www.skype.com/i/images/icons/favicon.ico");
+				img.setAttribute("alt", match[0]);
+				img.appendChild(document.createTextNode(match[0]));
+				a.appendChild(img);
+
+				lastLastIndex = trackRegex.lastIndex;
+			}
+
+			span.appendChild(document.createTextNode(source.substring(lastLastIndex)));
+			span.normalize();
+		}
+	}
+}
+
+
+// A dictionary keyed off of tabId that keeps track of data per tab (for
+// example what feedUrl was detected in the tab).
+var tabData = {};
+
+chrome.extension.onRequest.addListener(function(request, sender) {
+	if (request.msg == "SkypePing") {
+		console.log("SkypePing");
+		chrome.pageAction.show(sender.tab.id);
+		chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+			console.log(changeInfo.status);
+			if(changeInfo.status == "complete"){
+				console.log("_________"+changeInfo.status);
+				skypify()
+				// chrome.tabs.executeScript(tabId, {file: "script.js"}, console.log("pung"));
+			}
+		});
+	}
+	else if (request.msg == "other") {
+		console.log("other")
+		//shouldn't get here
+	}
+
+});
+
+chrome.tabs.onRemoved.addListener(function(tabId) {
+	console.log("deleting data")
+	delete tabData[tabId];
+});
+
+// On Linux, popups aren't supported yet, so Chrome will call into us when the user clicks on the icon in the OmniBox.
+chrome.pageAction.onClicked.addListener(function(tab) {
+	console.log("click!")
+
+	chrome.windows.get(tab.windowId, function(window) {
+		console.log("hello")
+		// We need to know if we are the active window, because the tab may  have moved to another window and we don't want to execute this action multiple times.
+		if (window.focused) {
+			// Create a new tab showing the subscription page with the right feed URL.
+			console.log("click?")
+			chrome.tabs.executeScript(null, {file: "script.js"});
+		}
+	});
+});
+</script>
+</head>
+</html>
