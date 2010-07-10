@@ -1,6 +1,6 @@
 {
 	"background_page": "background.html",
-	"update_url": "http://northisup.com/i/chrome/updates.xml",
+	"update_url": "http://github.com/NorthIsUp/BrowserExtensions/raw/master/updates.xml",
 	"content_scripts": [
 	{
 		"js": [ "doc_start.js", "script.js" ],
