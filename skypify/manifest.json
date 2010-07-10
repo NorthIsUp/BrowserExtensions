@@ -1,5 +1,5 @@
 {
-	"version": "0.4.5",
+	"version": "0.4.6",
 	"update_url": "http://github.com/NorthIsUp/BrowserExtensions/raw/master/updates.xml",
 	"description": "Skypify phone numbers around the web for use with skype",
 	"name": "Skypify the web",
